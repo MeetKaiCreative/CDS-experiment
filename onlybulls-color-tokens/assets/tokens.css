@@ -1,0 +1,49 @@
+/* OnlyBulls 2.0 — CDS color tokens. Dark mode only.
+   Bind the semantic layer. Primitives are provenance, not an API. */
+:root {
+  /* Surfaces */
+  --color-bg: #050B0A;
+  --color-bgSecondary: #111F1D;
+  --color-bgTertiary: #263A36;
+  --color-bgElevation2: #112424; /* rgba(105,216,230,.12) over #050B0A */
+  --color-bgHover: #0F2926;
+  --color-bgAlternate: #071D1A;
+  --color-bgOverlay: rgba(5, 11, 10, 0.72);
+
+  /* Primary actions */
+  --color-bgPrimary: #C9FFA4;
+  --color-bgPrimaryHover: #B3FB84;
+  --color-bgAccent: #E8FFD8;
+  --color-bgPrimaryWash: rgba(201, 255, 164, 0.12);
+
+  /* Foreground */
+  --color-fg: #F5F8F7;
+  --color-fgMuted: #C6D0CD;
+  --color-fgSubtle: #8FA29D;
+  --color-fgDisabled: #455B56;
+  --color-fgInverse: #071D1A;
+  --color-fgPrimary: #C9FFA4;
+  --color-fgInfo: #69D8E6;
+  --color-fgPositive: #68D391;
+  --color-fgNegative: #FF716C;
+  --color-fgWarning: #F4C95D;
+
+  /* Lines */
+  --color-bgLine: rgba(198, 208, 205, 0.12);
+  --color-bgLineHeavy: rgba(198, 208, 205, 0.20);
+  --color-bgLinePrimary: #70B84F;
+  --color-bgLinePrimarySubtle: rgba(104, 211, 145, 0.12);
+  --color-borderWarning: #F4C95D;
+
+  /* Accent pairs */
+  --color-accentBoldGreen: #68D391;
+  --color-accentSubtleGreen: rgba(104, 211, 145, 0.12);
+  --color-accentBoldRed: #FF716C;
+  --color-accentSubtleRed: rgba(255, 113, 108, 0.12);
+  --color-accentBoldBlue: #46BEC7;
+  --color-accentSubtleBlue: rgba(105, 216, 230, 0.12);
+  --color-accentBoldYellow: #F4C95D;
+  --color-accentSubtleYellow: rgba(244, 201, 93, 0.12);
+  --color-accentBoldGray: #C6D0CD;
+  --color-accentSubtleGray: rgba(198, 208, 205, 0.12);
+}

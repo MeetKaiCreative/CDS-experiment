@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OnlyBulls 2.0 — color tokens</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* ---- Primitives ---- */
+  --green-950:#071D1A; --green-900:#0F2926; --green-850:#12332E; --green-800:#16483D;
+  --green-700:#1E5E51; --green-600:#268274; --green-100:#CFEDE5; --green-50:#EFF8F5;
+  --lime-700:#598E3D; --lime-600:#70B84F; --lime-500:#9DDF71; --lime-400:#B3FB84;
+  --lime-300:#C9FFA4; --lime-100:#E8FFD8;
+  --aqua-600:#128B92; --aqua-500:#20999D; --aqua-400:#46BEC7; --aqua-300:#69D8E6; --aqua-100:#D8F6F8;
+  --neutral-1000:#050B0A; --neutral-950:#0B1513; --neutral-900:#111F1D; --neutral-800:#263A36;
+  --neutral-700:#455B56; --neutral-600:#687D78; --neutral-500:#8FA29D; --neutral-300:#C6D0CD;
+  --neutral-200:#DEE4E2; --neutral-25:#F5F8F7; --neutral-0:#FFFFFF;
+  --status-success:#68D391; --status-warning:#F4C95D; --status-error:#FF716C; --status-info:#69D8E6;
+
+  /* ---- CDS semantic tokens, bound to the above ---- */
+  --bg:var(--neutral-1000);
+  --bgSecondary:var(--neutral-900);
+  --bgTertiary:var(--neutral-800);
+  --bgElevation2:#112424;
+  --bgHover:var(--green-900);
+  --bgAlternate:var(--green-950);
+  --bgPrimary:var(--lime-300);
+  --bgPrimaryHover:var(--lime-400);
+  --bgAccent:var(--lime-100);
+  --bgOverlay:rgba(5,11,10,.72);
+  --fg:var(--neutral-25);
+  --fgMuted:var(--neutral-300);
+  --fgSubtle:var(--neutral-500);
+  --fgDisabled:var(--neutral-700);
+  --fgInverse:var(--green-950);
+  --fgPrimary:var(--lime-300);
+  --fgPositive:var(--status-success);
+  --fgNegative:var(--status-error);
+  --fgWarning:var(--status-warning);
+  --fgInfo:var(--status-info);
+  --bgLine:rgba(198,208,205,.12);
+  --bgLineHeavy:rgba(198,208,205,.20);
+  --bgLinePrimary:var(--lime-600);
+  --bgLinePrimarySubtle:rgba(104,211,145,.12);
+
+  --rail:264px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:Archivo,"Helvetica Neue",Arial,sans-serif;
+  font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+code,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.82em;letter-spacing:-.01em}
+
+/* ---------- shell ---------- */
+.shell{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);gap:0;max-width:1520px;margin:0 auto}
+nav{position:sticky;top:0;align-self:start;height:100vh;padding:40px 28px 40px 32px;border-right:1px solid var(--bgLine);overflow-y:auto}
+nav .mark{font-family:"Archivo Narrow",Archivo,sans-serif;font-weight:600;font-size:13px;color:var(--fgPrimary);margin-bottom:4px}
+nav .sub{font-size:12px;color:var(--fgSubtle);margin-bottom:28px;line-height:1.4}
+nav a{display:block;padding:6px 0;color:var(--fgMuted);text-decoration:none;font-size:13.5px;border-left:2px solid transparent;padding-left:12px;margin-left:-14px;transition:color .12s,border-color .12s}
+nav a:hover{color:var(--fg)}
+nav a.on{color:var(--fgPrimary);border-left-color:var(--fgPrimary)}
+main{padding:40px 48px 120px;min-width:0}
+@media(max-width:900px){.shell{grid-template-columns:1fr}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--bgLine);padding:24px}main{padding:24px}}
+
+/* ---------- type ---------- */
+h1{font-size:34px;line-height:1.15;font-weight:700;margin:0 0 10px;letter-spacing:-.02em;max-width:22ch}
+h2{font-size:20px;font-weight:600;margin:0 0 6px;letter-spacing:-.01em}
+h3{font-size:15px;font-weight:600;margin:0 0 4px}
+p{max-width:74ch;margin:0 0 14px;color:var(--fgMuted)}
+p.lede{color:var(--fg);font-size:16.5px;max-width:66ch}
+section{padding:44px 0;border-top:1px solid var(--bgLine)}
+section:first-of-type{border-top:0;padding-top:8px}
+.sechead{display:flex;align-items:baseline;gap:14px;margin-bottom:22px;flex-wrap:wrap}
+.sechead p{margin:0}
+
+/* ---------- ramps ---------- */
+.ramp{margin-bottom:26px}
+.ramp-head{display:flex;align-items:baseline;gap:12px;margin-bottom:10px}
+.ramp-head h3{margin:0}
+.ramp-head span{font-size:13px;color:var(--fgSubtle)}
+.chips{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:2px;border-radius:6px;overflow:hidden}
+@media(max-width:700px){.chips{grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:repeat(2,1fr)}}
+.chip{padding:44px 10px 10px;border-radius:0}
+.chip b{display:block;font-size:11.5px;font-weight:600}
+.chip span{display:block;font-size:10.5px;opacity:.72;font-family:"JetBrains Mono",monospace}
+
+/* ---------- tables ---------- */
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+caption{text-align:left;font-size:13px;color:var(--fgSubtle);padding:0 0 10px}
+th{text-align:left;font-weight:600;font-size:12px;color:var(--fgSubtle);padding:0 14px 8px 0;border-bottom:1px solid var(--bgLineHeavy);white-space:nowrap}
+td{padding:9px 14px 9px 0;border-bottom:1px solid var(--bgLine);vertical-align:top}
+tr:hover td{background:var(--bgSecondary)}
+td.tok{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--fgPrimary);white-space:nowrap}
+td.src{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--fgMuted);white-space:nowrap}
+td.hex{font-family:"JetBrains Mono",monospace;font-size:12.5px;white-space:nowrap}
+td.note{color:var(--fgMuted);min-width:200px}
+.sw{display:inline-block;width:26px;height:16px;border-radius:3px;vertical-align:-3px;margin-right:9px;border:1px solid rgba(255,255,255,.14)}
+.group td{background:var(--bgSecondary);font-weight:600;font-size:11.5px;color:var(--fgSubtle);padding-top:16px}
+.group:hover td{background:var(--bgSecondary)}
+
+/* ---------- contrast grid ---------- */
+.grid-wrap{overflow-x:auto}
+table.grid td{text-align:center;padding:8px 6px;font-family:"JetBrains Mono",monospace;font-size:12px}
+table.grid td:first-child{text-align:left;font-family:"JetBrains Mono",monospace;color:var(--fgPrimary);white-space:nowrap;padding-right:18px}
+table.grid th{text-align:center;padding-bottom:8px}
+.r{display:block;font-weight:500}
+.v{display:block;font-size:9.5px;font-family:Archivo,sans-serif;letter-spacing:.01em;margin-top:1px}
+.pass-aaa .v{color:var(--fgPositive)}
+.pass-aa .v{color:var(--fgMuted)}
+.pass-lg .v{color:var(--fgWarning)}
+.fail .v{color:var(--fgNegative)}
+.fail .r{color:var(--fgNegative)}
+
+/* ---------- preview ---------- */
+.preview{display:grid;grid-template-columns:352px minmax(0,1fr);gap:40px;align-items:start}
+@media(max-width:820px){.preview{grid-template-columns:1fr}}
+.phone{background:var(--bg);border:1px solid var(--bgLine);border-radius:22px;padding:18px 16px 22px}
+.phone h4{margin:6px 0 16px;font-size:19px;font-weight:600}
+.balance{background:var(--bgTertiary);border-radius:14px;padding:18px}
+.balance .lbl{font-size:12px;color:var(--fgSubtle)}
+.balance .amt{font-size:31px;font-weight:700;letter-spacing:-.02em;margin:5px 0 4px}
+.balance .chg{font-size:13px;color:var(--fgPositive)}
+.cta{display:block;width:100%;margin:16px 0 10px;padding:14px;border:0;border-radius:12px;background:var(--bgPrimary);color:var(--fgInverse);font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;transition:background .13s}
+.cta:hover{background:var(--bgPrimaryHover)}
+.cta:active{background:var(--lime-500)}
+.cta:focus-visible{outline:2px solid var(--bgAccent);outline-offset:2px}
+.row2{display:flex;gap:10px}
+.btn2{flex:1;padding:11px;border:1px solid var(--bgLineHeavy);border-radius:10px;background:transparent;color:var(--fg);font-family:inherit;font-size:14px;font-weight:500;cursor:pointer}
+.btn2:hover{background:var(--bgHover)}
+.btn2:focus-visible{outline:2px solid var(--bgAccent);outline-offset:2px}
+.assets{margin-top:16px;background:var(--bgTertiary);border-radius:14px;padding:6px}
+.cell{display:flex;align-items:center;gap:12px;padding:10px;border-radius:10px}
+.cell.sel{background:var(--bgElevation2)}
+.dot{width:32px;height:32px;border-radius:50%;background:var(--aqua-500);flex:0 0 auto}
+.cell .nm{flex:1;min-width:0}
+.cell .nm b{display:block;font-size:14px;font-weight:600}
+.cell .nm span{display:block;font-size:12px;color:var(--fgSubtle)}
+.cell .val{text-align:right}
+.cell .val b{display:block;font-size:14px;font-weight:600}
+.cell .val span{display:block;font-size:12px}
+.up{color:var(--fgPositive)}.down{color:var(--fgNegative)}
+.ai{margin-top:14px;padding:14px;border-radius:12px;border:1px solid var(--aqua-600);background:rgba(105,216,230,.08)}
+.ai .k{font-size:11.5px;color:var(--fgInfo);margin-bottom:5px;font-weight:600}
+.ai p{margin:0;font-size:13px;color:var(--fgMuted)}
+.ratio{list-style:none;padding:0;margin:0}
+.ratio li{display:grid;grid-template-columns:52px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--bgLine)}
+.ratio .pct{font-weight:700;font-size:17px;letter-spacing:-.01em}
+.ratio b{display:block;font-size:14px;margin-bottom:2px}
+.ratio span{font-size:13px;color:var(--fgMuted)}
+
+/* ---------- decisions ---------- */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:16px}
+.card{border:1px solid var(--bgLine);border-radius:12px;padding:18px}
+.card.open{border-color:var(--bgLineHeavy)}
+.card h3{margin-bottom:10px;font-size:12.5px;color:var(--fgSubtle);font-weight:600}
+.card ul{margin:0;padding-left:16px}
+.card li{margin-bottom:9px;font-size:13.5px;color:var(--fgMuted)}
+.card li b{color:var(--fg);font-weight:600}
+
+/* ---------- code ---------- */
+.codehead{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:10px}
+pre{background:var(--neutral-1000);border:1px solid var(--bgLine);border-radius:10px;padding:18px;overflow-x:auto;margin:0 0 22px;font-family:"JetBrains Mono",monospace;font-size:12.5px;line-height:1.65;color:var(--fgMuted)}
+pre .k{color:var(--fgPrimary)}
+pre .v2{color:var(--fgInfo)}
+button.copy{padding:7px 13px;border:1px solid var(--bgLineHeavy);border-radius:8px;background:transparent;color:var(--fgMuted);font-family:inherit;font-size:12.5px;cursor:pointer}
+button.copy:hover{background:var(--bgHover);color:var(--fg)}
+button.copy:focus-visible{outline:2px solid var(--bgAccent);outline-offset:2px}
+.foot{padding:32px 0 0;border-top:1px solid var(--bgLine);font-size:12.5px;color:var(--fgSubtle);max-width:74ch}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+<nav>
+  <div class="mark">OnlyBulls 2.0</div>
+  <div class="sub">New palette bound to CDS semantic tokens. Dark mode only.</div>
+  <a href="#primitives">Primitive ramps</a>
+  <a href="#map">CDS token map</a>
+  <a href="#contrast">Contrast matrix</a>
+  <a href="#applied">Applied</a>
+  <a href="#open">Open decisions</a>
+  <a href="#config">Theme config</a>
+</nav>
+
+<main>
+<section>
+  <h1>The new palette, applied to the CDS token contract</h1>
+  <p class="lede">Every CDS canonical color token, bound to a value from the new palette. This is what goes into <code>ThemeProvider</code>; once set, every CDS component picks it up. Bind the semantic layer, never the primitives.</p>
+  <p>Contrast ratios on this page are computed in the browser from the values below, so they cannot drift from the swatches next to them. The page renders in its own palette — what you see is what the tokens do.</p>
+</section>
+
+<section id="primitives">
+  <div class="sechead"><h2>Primitive ramps</h2><p>Source values. Not bound directly, not published.</p></div>
+  <div id="ramps"></div>
+</section>
+
+<section id="map">
+  <div class="sechead"><h2>CDS token map</h2><p>CDS name on the left is what dev writes. The primitive name is provenance only.</p></div>
+  <table id="maptable"></table>
+</section>
+
+<section id="contrast">
+  <div class="sechead"><h2>Contrast matrix</h2><p>Every foreground against every surface. AA body 4.5:1 · AA large and UI 3:1 · AAA 7:1.</p></div>
+  <div class="grid-wrap"><table class="grid" id="gridtable"></table></div>
+  <p style="margin-top:16px"><code>fgDisabled</code> fails everywhere by design — disabled states are exempt from minimums under WCAG 1.4.3. One pair lands short: <code>fgSubtle</code> on <code>bgTertiary</code> at 4.49:1, a hair under AA body. Use it for large text and metadata only, or step up to <code>fgMuted</code> inside cards. <code>bgElevation2</code> is measured at its composite value <code>#112424</code>, since contrast can't be computed from a translucent layer.</p>
+</section>
+
+<section id="applied">
+  <div class="sechead"><h2>Applied</h2><p>Live tokens. Tab to the buttons to see the offset focus ring.</p></div>
+  <div class="preview">
+    <div class="phone">
+      <h4>Wallet</h4>
+      <div class="balance">
+        <div class="lbl">Total balance</div>
+        <div class="amt">$12,480.55</div>
+        <div class="chg">+$318.20 · +2.61% today</div>
+      </div>
+      <button class="cta">Add money</button>
+      <div class="row2"><button class="btn2">Send</button><button class="btn2">Receive</button></div>
+      <div class="assets">
+        <div class="cell"><div class="dot"></div><div class="nm"><b>USDC</b><span>USD Coin</span></div><div class="val"><b>$8,200.00</b><span class="up">+0.01%</span></div></div>
+        <div class="cell sel"><div class="dot"></div><div class="nm"><b>ETH</b><span>Ethereum</span></div><div class="val"><b>$3,140.12</b><span class="up">+4.20%</span></div></div>
+        <div class="cell"><div class="dot"></div><div class="nm"><b>SOL</b><span>Solana</span></div><div class="val"><b>$1,140.43</b><span class="down">-1.86%</span></div></div>
+      </div>
+      <div class="ai"><div class="k">AI analysis</div><p>Your portfolio is 66% stablecoin — lower volatility than most wallets your size.</p></div>
+    </div>
+    <ul class="ratio">
+      <li><span class="pct">70%</span><div><b>Near-black neutral surfaces</b><span>Canvas, section, card and selected row. <code>bg</code> through <code>bgElevation2</code> do almost all the work; green appears only on hover.</span></div></li>
+      <li><span class="pct">20%</span><div><b>Neutrals</b><span>All type except the brand accent. <code>fg</code> for values, <code>fgMuted</code> for supporting, <code>fgSubtle</code> for metadata.</span></div></li>
+      <li><span class="pct">7%</span><div><b>Lime</b><span>One CTA per screen. Not the gain figure, not the selected row.</span></div></li>
+      <li><span class="pct">3%</span><div><b>Aqua</b><span>AI callouts and asset avatars. Aqua means information about your money; lime means move your money.</span></div></li>
+      <li><span class="pct">—</span><div><b>Gains stay green, not lime</b><span><code>fgPositive</code> #68D391 sits 1.62:1 from <code>bgPrimary</code>. Close enough to read as related, far enough that the CTA stays the only lime thing.</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<section id="open">
+  <div class="sechead"><h2>Open decisions</h2><p>Not mine to close. Everything else above is safe to build on.</p></div>
+  <div class="cards">
+    <div class="card open">
+      <h3>Not in the theme</h3>
+      <ul>
+        <li><b>Pressed state.</b> <code>#9DDF71</code> has no CDS token, so it is out of this file entirely. The CTA currently has hover and focus but no pressed value.</li>
+        <li><b>Gradients, icon sizes, shadows.</b> Removed with the rest of <code>ThemeVarsExtended</code>. They still exist in the Figma spec and will need somewhere to live before build.</li>
+        <li><b>Purple accent.</b> The palette has no purple; <code>accentBoldPurple</code> / <code>accentSubtlePurple</code> stay on CDS defaults for staking and NFT.</li>
+      </ul>
+    </div>
+    <div class="card open">
+      <h3>Needs a decision</h3>
+      <ul>
+        <li><b>Surfaces are neutral, accents are green.</b> The ramp runs on green-biased neutrals, not the green ramp. Green now appears only at <code>bgHover</code> and <code>bgAlternate</code> — which means hover is the one place a surface shifts hue rather than value.</li>
+        <li><b>Depth is nearly flat.</b> <code>bgSecondary</code> to <code>bgTertiary</code> is 1.41:1 and <code>bgTertiary</code> to <code>bgElevation2</code> is 1.34:1. Legible on a good display, easy to lose on OLED at low brightness. Borders may have to carry the hierarchy instead.</li>
+        <li><b>Card layer moves.</b> Cards were <code>bgSecondary</code>, here they are <code>bgTertiary</code>. Dev renames at call sites.</li>
+        <li><b>Brand border ≠ brand fill.</b> <code>bgLinePrimary</code> is lime-600 <code>#70B84F</code> while <code>bgPrimary</code> is lime-300. A selected card and a CTA will read as two different greens.</li>
+        <li><b>Light mode.</b> Dark only. The neutral ramp supports light; the semantic layer does not.</li>
+      </ul>
+    </div>
+    <div class="card open">
+      <h3>Already drifted</h3>
+      <ul>
+        <li><b>Two source tables disagree.</b> In Figma, <code>bgAccent</code> is <code>#7CFF8A</code> in the Color tokens table and <code>#70FF8A</code> in the CDS Token Spec. Neither is used here — this page uses <code>#E8FFD8</code> for the focus ring — but the Figma pair still needs reconciling.</li>
+        <li><b>Scrim deepened.</b> <code>bgOverlay</code> moved from 62% to 72%. Anything tuned against the old value needs a look.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="config">
+  <div class="sechead"><h2>Theme config</h2><p>Paste into the app's ThemeConfig, or into a skill so Claude builds screens with these tokens by default.</p></div>
+  <div class="codehead"><h3>CDS color tokens</h3><button class="copy" data-t="json">Copy JSON</button></div>
+  <pre id="json"></pre>
+  <div class="codehead"><h3>CSS custom properties</h3><button class="copy" data-t="css">Copy CSS</button></div>
+  <pre id="css"></pre>
+</section>
+
+<div class="foot">
+  Provenance: primitives and usage rules from the color system exploration board; CDS token names and the handoff contract from the OnlyBulls Color tokens frame. Contrast computed per WCAG 2.1 relative luminance. Anything changed here has to be reflected in both Figma tables.
+</div>
+</main>
+</div>
+
+<script>
+const RAMPS=[
+ {name:"Green — brand anchor",note:"Surfaces. green-700 stays a state, never a layer.",dark:true,
+  items:[["green-950","#071D1A"],["green-900","#0F2926"],["green-850","#12332E"],["green-800","#16483D"],["green-700","#1E5E51"],["green-600","#268274"],["green-100","#CFEDE5"],["green-50","#EFF8F5"]]},
+ {name:"Lime — money & action",note:"CTAs and value emphasis. Never body copy. Around 7% of a screen.",
+  items:[["lime-700","#598E3D"],["lime-600","#70B84F"],["lime-500","#9DDF71"],["lime-400","#B3FB84"],["lime-300","#C9FFA4"],["lime-100","#E8FFD8"]]},
+ {name:"Aqua — intelligence & information",note:"Wallet, network, AI analysis, links, charts.",
+  items:[["aqua-600","#128B92"],["aqua-500","#20999D"],["aqua-400","#46BEC7"],["aqua-300","#69D8E6"],["aqua-100","#D8F6F8"]]},
+ {name:"Neutral — green-biased",note:"All type. No blue-greys; they flatten the palette.",
+  items:[["neutral-1000","#050B0A"],["neutral-950","#0B1513"],["neutral-900","#111F1D"],["neutral-800","#263A36"],["neutral-700","#455B56"],["neutral-600","#687D78"],["neutral-500","#8FA29D"],["neutral-300","#C6D0CD"],["neutral-200","#DEE4E2"],["neutral-25","#F5F8F7"],["neutral-0","#FFFFFF"]]},
+ {name:"Status",note:"Muted on purpose so they coexist with lime instead of competing.",
+  items:[["success","#68D391"],["warning","#F4C95D"],["error","#FF716C"],["info","#69D8E6"]]}
+];
+
+const MAP=[
+ ["group","Surfaces"],
+ ["bg","neutral-1000","#050B0A","Level 0 — app canvas, behind everything"],
+ ["bgSecondary","neutral-900","#111F1D","Level 1 — primary sections"],
+ ["bgTertiary","neutral-800","#263A36","Level 2 — cards, panels, toasts"],
+ ["bgElevation2","surface-info on neutral-1000","rgba(105,216,230,0.12) over #050B0A","Level 3 — modals, sheets, selected rows, active tabs. Composites to #112424."],
+ ["bgHover","green-900","#0F2926","Hover and emphasis only. Not a fifth layer."],
+ ["bgAlternate","green-950","#071D1A","Alternate section surface"],
+ ["bgOverlay","color-scrim","rgba(5,11,10,0.72)","Scrim behind modals and sheets"],
+ ["bgInverse","—","CDS default","Not in use"],
+ ["group","Primary actions"],
+ ["bgPrimary","lime-300","#C9FFA4","Primary CTA fill, selected chip"],
+ ["bgPrimaryHover","lime-400","#B3FB84","CTA hover"],
+ ["bgAccent","lime-100","#E8FFD8","Focus ring — 2px offset, never inline on bgPrimary"],
+ ["bgPrimaryWash","lime-300 @ 12%","rgba(201,255,164,0.12)","Subtle brand container — follows the alpha-surface pattern"],
+ ["group","Foreground — text & icons"],
+ ["fg","neutral-25","#F5F8F7","Balances, headings, body"],
+ ["fgMuted","neutral-300","#C6D0CD","Supporting copy, list metadata"],
+ ["fgSubtle","neutral-500","#8FA29D","Timestamps, captions, placeholders"],
+ ["fgDisabled","neutral-700","#455B56","Disabled text and icons"],
+ ["fgInverse","green-950","#071D1A","Label on a lime CTA"],
+ ["fgPrimary","lime-300","#C9FFA4","Value emphasis. Never body copy, never links."],
+ ["fgInfo","aqua-300","#69D8E6","Links, AI analysis attribution"],
+ ["fgPositive","success","#68D391","Gains, confirmed transactions"],
+ ["fgNegative","error","#FF716C","Losses, failures"],
+ ["fgWarning","warning","#F4C95D","Pending, caution"],
+ ["group","Lines"],
+ ["bgLine","border-subtle","rgba(198,208,205,0.12)","Hairline dividers, card edges"],
+ ["bgLineHeavy","border-default","rgba(198,208,205,0.20)","Input borders, prominent edges"],
+ ["bgLinePrimary","border-brand / lime-600","#70B84F","Selected and active borders"],
+ ["bgLinePrimarySubtle","surface-success","rgba(104,211,145,0.12)","Active input border"],
+ ["borderWarning","text-warning","#F4C95D","Warning toast border"],
+ ["group","Accent pairs — tags, badges, charts"],
+ ["accentBoldGreen","success","#68D391","Gains, positive, active"],
+ ["accentSubtleGreen","surface-success","rgba(104,211,145,0.12)","Green tag background"],
+ ["accentBoldRed","error","#FF716C","Losses, error tags"],
+ ["accentSubtleRed","surface-error","rgba(255,113,108,0.12)","Red tag background"],
+ ["accentBoldBlue","aqua-400","#46BEC7","Info, chart series"],
+ ["accentSubtleBlue","surface-info","rgba(105,216,230,0.12)","Info tag background"],
+ ["accentBoldYellow","warning","#F4C95D","Pending, chart series"],
+ ["accentSubtleYellow","surface-warning","rgba(244,201,93,0.12)","Warning tag background"],
+ ["accentBoldGray","neutral-300","#C6D0CD","Inactive tags, default state"],
+ ["accentSubtleGray","neutral-300 @ 12%","rgba(198,208,205,0.12)","Neutral tag background"],
+ ["accentBoldPurple","—","CDS default","Unresolved — no purple in the palette"],
+ ["accentSubtlePurple","—","CDS default","Unresolved — no purple in the palette"]
+];
+
+const SURFACES=[["bg","#050B0A"],["bgSecondary","#111F1D"],["bgTertiary","#263A36"],["bgElevation2","#112424"],["bgHover","#0F2926"]];
+const FORES=[["fg","#F5F8F7"],["fgMuted","#C6D0CD"],["fgSubtle","#8FA29D"],["fgDisabled","#455B56"],["fgPrimary","#C9FFA4"],["fgInfo","#69D8E6"],["fgPositive","#68D391"],["fgNegative","#FF716C"],["fgWarning","#F4C95D"]];
+
+function lum(h){h=h.replace('#','');const c=[0,2,4].map(i=>parseInt(h.substr(i,2),16)/255)
+  .map(x=>x<=.03928?x/12.92:Math.pow((x+.055)/1.055,2.4));
+  return .2126*c[0]+.7152*c[1]+.0722*c[2];}
+function cr(a,b){const l=[lum(a),lum(b)].sort((x,y)=>y-x);return (l[0]+.05)/(l[1]+.05);}
+function verdict(r){return r>=7?["pass-aaa","AAA"]:r>=4.5?["pass-aa","AA"]:r>=3?["pass-lg","AA lg"]:["fail","fail"];}
+function readable(h){return lum(h)>.32?"#071D1A":"#F5F8F7";}
+
+document.getElementById('ramps').innerHTML=RAMPS.map(r=>
+ `<div class="ramp"><div class="ramp-head"><h3>${r.name}</h3><span>${r.note}</span></div>
+  <div class="chips">${r.items.map(([n,h])=>
+   `<div class="chip" style="background:${h};color:${readable(h)}"><b>${n}</b><span>${h}</span></div>`).join('')}</div></div>`).join('');
+
+document.getElementById('maptable').innerHTML=
+ `<caption>Bind the CDS name. The primitive name is provenance, not an API.</caption>
+  <thead><tr><th>CDS token</th><th>Primitive</th><th>Value</th><th>Use</th></tr></thead><tbody>`+
+ MAP.map(r=>{
+   if(r[0]==="group")return `<tr class="group"><td colspan="4">${r[1]}</td></tr>`;
+   const [tok,src,val,note]=r;
+   const isHex=/^#|^rgba|^linear/.test(val);
+   const swatch=isHex?`<span class="sw" style="background:${val}"></span>`:"";
+   return `<tr><td class="tok">${tok}</td><td class="src">${src}</td><td class="hex">${swatch}${val}</td><td class="note">${note}</td></tr>`;
+ }).join('')+`</tbody>`;
+
+document.getElementById('gridtable').innerHTML=
+ `<thead><tr><th></th>${SURFACES.map(s=>`<th>${s[0]}</th>`).join('')}</tr></thead><tbody>`+
+ FORES.map(([fn,fv])=>`<tr><td>${fn}</td>`+SURFACES.map(([sn,sv])=>{
+   const r=cr(fv,sv),[cls,lab]=verdict(r);
+   return `<td class="${cls}"><span class="r">${r.toFixed(2)}</span><span class="v">${lab}</span></td>`;
+ }).join('')+`</tr>`).join('')+`</tbody>`;
+
+const OUT_OVERRIDE={bgElevation2:"#112424"};
+const jsonRows=MAP.filter(r=>r[0]!=="group"&&/^#|^rgba|^linear|px$/.test(r[2]))
+  .map(r=>[r[0],r[1],OUT_OVERRIDE[r[0]]||r[2],r[3]]);
+const jsonText=`{\n  "color": {\n`+jsonRows.filter(r=>!/px$/.test(r[2])&&!r[0].includes('.')).map(r=>`    "${r[0]}": "${r[2]}"`).join(',\n')+`\n  }\n}`;
+const cssText=`:root {\n`+jsonRows.filter(r=>!/px$/.test(r[2])&&!r[0].includes('.')).map(r=>`  --color-${r[0]}: ${r[2]};`).join('\n')+`\n}`;
+document.getElementById('json').innerHTML=jsonText.replace(/"([a-zA-Z.]+)":/g,'<span class="k">"$1":</span>').replace(/: ("(?:#|rgba|linear)[^"]*")/g,': <span class="v2">$1</span>');
+document.getElementById('css').innerHTML=cssText.replace(/(--color-[a-zA-Z]+)/g,'<span class="k">$1</span>').replace(/: ([^;]+);/g,': <span class="v2">$1</span>;');
+
+document.querySelectorAll('button.copy').forEach(b=>b.addEventListener('click',async()=>{
+  const t=b.dataset.t==='json'?jsonText:cssText;
+  try{await navigator.clipboard.writeText(t);const o=b.textContent;b.textContent='Copied';setTimeout(()=>b.textContent=o,1400);}
+  catch(e){b.textContent='Copy failed';}
+}));
+
+const links=[...document.querySelectorAll('nav a')];
+links.forEach(l=>l.addEventListener('click',e=>{
+  e.preventDefault();
+  const t=document.querySelector(l.getAttribute('href'));
+  if(!t)return;
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  t.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+}));
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id));}});},{rootMargin:'-20% 0px -70%'});
+document.querySelectorAll('section[id]').forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
